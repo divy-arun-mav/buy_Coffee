@@ -1,22 +1,26 @@
 import { useState, useEffect } from "react";
-const Memos = ({ state }) => {
+const Memos = ({ state, account }) => {
   const [memos, setMemos] = useState([]);
   const { contract } = state;
-
   useEffect(() => {
     const memosMessage = async () => {
       const memos = await contract.getMemos();
       setMemos(memos);
     };
     memosMessage();
-  }, [contract]);
+  }, [contract,memos]);
 
   return (
 
     <>
       <div>
-        <div>
-          <h2 className="text-center">Transaction History</h2>
+        <h3 className="text-center text-success mt-5">Donors</h3>
+        {(memos.length === 0 )? <> <div className="text-center fw-bolder">
+          <h2>
+            Loading...
+          </h2>
+        </div></> : <div>
+
           <div className="table-container">
             <table>
               <thead>
@@ -39,12 +43,13 @@ const Memos = ({ state }) => {
               </tbody>
             </table>
           </div>
-        </div>
+        </div>}
       </div>
       <style>{`
 
 .table-container {
 overflow-x: auto;
+
 }
 
 table {
@@ -53,10 +58,17 @@ border-collapse: collapse;
 margin-top: 20px;
 }
 
+
+
 th, td {
 padding: 10px;
 text-align: center;
 border-bottom: 1px solid #ddd;
+}
+td{
+  background-color: aliceblue;
+  color: red;
+  font-weight: bolder
 }
 
 /* Add media queries for responsiveness */

@@ -53,30 +53,21 @@ function App() {
 
   return (
     <>
-       <nav className="navbar navbar-expand-lg bg-body-tertiary">
+       <nav className="navbar navbar-expand-lg bg-body-dark">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">Tech4Stack</Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item m-1">
-                <Link className="nav-link" aria-current="page" to="/">Home</Link>
-              </li>
-              <li className="nav-item m-1">
-                <Link className="nav-link" to="/users">Link</Link>
-              </li>
-
-            </ul>
-            <form className="d-flex" role="search">
-              <button className="btn btn-outline-success" disabled={account} onClick={connectWallet} type="submit">{account ? (account.slice(0, 4) + "..." + account.slice(38)) : "Connect"}</button>
+          <Link className="navbar-brand" ><span className="text-danger">Tech</span><span>4</span><span className="text-success">Stack</span></Link>
+          <div  type="button" >
+          <form className="d-flex ms-auto" role="search">
+              <button className="btn btn-outline-primary" onClick={connectWallet} type="submit">{account ? (account.slice(0, 4) + "..." + account.slice(38)) : "Connect"}</button>
             </form>
           </div>
+          
         </div>
       </nav>
+     
       <Buy state={state}/>
-      <Memos state={state}/>
+      
+      <Memos state={state} account={account}/>
     </>
   );
 }

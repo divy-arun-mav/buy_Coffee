@@ -4,6 +4,7 @@ import { ethers } from "ethers";
 import Buy from "./components/Buy";
 import Memos from "./components/Memos";
 import { Link } from "react-router-dom";
+import Logo from "./images/logo.png";
 import { toast } from 'react-toastify';
 import "./App.css";
 
@@ -55,7 +56,8 @@ function App() {
     <>
        <nav className="navbar navbar-expand-lg bg-body-dark">
         <div className="container-fluid">
-          <Link className="navbar-brand" ><span className="text-danger">Tech</span><span>4</span><span className="text-success">Stack</span></Link>
+          <Link className="navbar-brand" ><span className="text-danger">Lud</span><span>o</span><span className="text-success">Kings</span></Link>
+          {/* <img className="logo" src={Logo}/> */}
           <div  type="button" >
           <form className="d-flex ms-auto" role="search">
               <button className="btn btn-outline-primary" onClick={connectWallet} type="submit">{account ? (account.slice(0, 4) + "..." + account.slice(38)) : "Connect"}</button>
